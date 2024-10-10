@@ -1,0 +1,20 @@
+---
+const features = [
+  { title: 'Easy to Use', description: 'Our product is designed with simplicity in mind.' },
+  { title: 'Powerful', description: 'Unlock the full potential of your business with our tools.' },
+  { title: 'Affordable', description: 'Get enterprise-level features at a fraction of the cost.' },
+];
+---
+<section id="features" class="py-20">
+  <div class="container mx-auto">
+    <h2 class="text-3xl font-bold text-center mb-12">Our Features</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {features.map(feature => (
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <h3 class="text-xl font-semibold mb-2">{feature.title}</h3>
+          <p>{feature.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,66 @@
+---
+const navItems = [
+  { href: '#home', text: 'Home', color: 'text-yellow-500' },
+  { href: '#about', text: 'About', color: 'text-green-500' },
+  { href: '#portfolio', text: 'Portfolio', color: 'text-blue-500' },
+  { href: '#skills', text: 'Skills', color: 'text-purple-500' },
+  { href: '#contact', text: 'Contact', color: 'text-red-500' },
+];
+---
+
+<header class="bg-gray-800 fixed top-0 left-0 right-0 z-10">
+  <nav class="container mx-auto px-4">
+    <ul class="flex justify-center space-x-6 py-4">
+      {navItems.map(item => (
+        <li>
+          <a
+            href={item.href}
+            class="py-2 px-4 text-lg font-semibold hover:bg-gray-700 transition-colors text-white"
+            data-color={item.color}
+          >
+            {item.text}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+</header>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const navLinks = document.querySelectorAll('header nav a');
+    const sections = document.querySelectorAll('main > section');
+
+    const observerOptions = {
+      root: null,
+      rootMargin: '-20% 0px -80% 0px',
+      threshold: 0
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const activeLink = document.querySelector(`header nav a[href="#${entry.target.id}"]`);
+          navLinks.forEach(link => {
+            link.classList.remove('bg-gray-700');
+            const color = (link as HTMLElement).dataset.color;
+            if (color) {
+              link.classList.remove(color);
+            }
+            link.classList.add('text-white');
+          });
+          if (activeLink) {
+            activeLink.classList.add('bg-gray-700');
+            activeLink.classList.remove('text-white');
+            const color = (activeLink as HTMLElement).dataset.color;
+            if (color) {
+              (activeLink as HTMLElement).classList.add(color);
+            }
+          }
+        }
+      });
+    }, observerOptions);
+
+    sections.forEach(section => observer.observe(section));
+  });
+</script>
