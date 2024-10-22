@@ -1,66 +1,103 @@
 ---
-const navItems = [
-  { href: '#home', text: 'Home', color: 'text-yellow-500' },
-  { href: '#about', text: 'About', color: 'text-green-500' },
-  { href: '#portfolio', text: 'Portfolio', color: 'text-blue-500' },
-  { href: '#skills', text: 'Skills', color: 'text-purple-500' },
-  { href: '#contact', text: 'Contact', color: 'text-red-500' },
-];
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+import LanguagePicker from '../components/LanguagePicker.astro';
 ---
 
-<header class="bg-gray-800 fixed top-0 left-0 right-0 z-10">
-  <nav class="container mx-auto px-4">
-    <ul class="flex justify-center space-x-6 py-4">
-      {navItems.map(item => (
+<header
+  class="bg-gray-800 dark:bg-gray-900 text-white py-4 fixed w-full z-10 top-0"
+>
+  <div class="container mx-auto flex justify-between items-center">
+    <a href={``} class="text-2xl font-bold">Your Name</a>
+    <nav class="flex items-center">
+      <ul class="flex space-x-4 mr-4">
         <li>
           <a
-            href={item.href}
-            class="py-2 px-4 text-lg font-semibold hover:bg-gray-700 transition-colors text-white"
-            data-color={item.color}
-          >
-            {item.text}
-          </a>
+            href={`#home`}
+            class="nav-link bg-gray-700 hover:bg-gray-600 px-3 py-2 rounded-md transition duration-300"
+            >{t('nav.home')}</a>
         </li>
-      ))}
-    </ul>
-  </nav>
+        <li>
+          <a
+            href={`#about`}
+            class="nav-link hover:bg-gray-600 px-3 py-2 rounded-md transition duration-300"
+            >{t('nav.about')}</a>
+        </li>
+        <li>
+          <a
+            href={`#portfolio`}
+            class="nav-link hover:bg-gray-600 px-3 py-2 rounded-md transition duration-300"
+            >{t('nav.portfolio')}</a>
+        </li>
+        <li>
+          <a
+            href={`#skills`}
+            class="nav-link hover:bg-gray-600 px-3 py-2 rounded-md transition duration-300"
+            >{t('nav.skills')}</a>
+        </li>
+        <li>
+          <a
+            href={`#contact`}
+            class="nav-link hover:bg-gray-600 px-3 py-2 rounded-md transition duration-300"
+            >{t('nav.contact')}</a>
+        </li>
+      </ul>
+      <!-- <LanguagePicker /> -->
+    </nav>
+  </div>
 </header>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const navLinks = document.querySelectorAll('header nav a');
-    const sections = document.querySelectorAll('main > section');
+  document.addEventListener("DOMContentLoaded", () => {
+    const navLinks = document.querySelectorAll(".nav-link");
+    const sections = document.querySelectorAll("section");
 
-    const observerOptions = {
-      root: null,
-      rootMargin: '-20% 0px -80% 0px',
-      threshold: 0
-    };
+    function setActiveLink() {
+      let index = sections.length;
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const activeLink = document.querySelector(`header nav a[href="#${entry.target.id}"]`);
-          navLinks.forEach(link => {
-            link.classList.remove('bg-gray-700');
-            const color = (link as HTMLElement).dataset.color;
-            if (color) {
-              link.classList.remove(color);
-            }
-            link.classList.add('text-white');
-          });
-          if (activeLink) {
-            activeLink.classList.add('bg-gray-700');
-            activeLink.classList.remove('text-white');
-            const color = (activeLink as HTMLElement).dataset.color;
-            if (color) {
-              (activeLink as HTMLElement).classList.add(color);
-            }
-          }
-        }
+      while (--index && window.scrollY + 100 < sections[index].offsetTop) {}
+
+      navLinks.forEach((link) => {
+        link.classList.remove("bg-blue-600", "text-white");
+       /*  link.classList.add("bg-gray-700"); */
       });
-    }, observerOptions);
+      navLinks[index].classList.remove("bg-gray-700");
+      navLinks[index].classList.add("bg-blue-600", "text-white");
+    }
 
-    sections.forEach(section => observer.observe(section));
+    setActiveLink();
+    window.addEventListener("scroll", setActiveLink);
   });
 </script>
+
+<style>
+  .nav-link {
+    font-weight: 500;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 5px;
+  }
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    display: block;
+    margin-top: 5px;
+    right: 0;
+    background: white;
+    transition: width 0.3s ease;
+    -webkit-transition: width 0.3s ease;
+  }
+  .nav-link:hover::after {
+    width: 100%;
+    left: 0;
+    background: white;
+  }
+  .nav-link.bg-blue-600 {
+    font-weight: bold;
+  }
+</style>

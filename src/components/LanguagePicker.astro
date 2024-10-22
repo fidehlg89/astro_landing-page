@@ -1,0 +1,92 @@
+---
+import { languages } from '../i18n/ui';
+---
+<div class="custom-select">
+    <div class="select-selected">
+        Select language
+        <span class="icon">&#9660;</span> <!-- Down arrow icon -->
+    </div>
+    <div class="select-items select-hide">
+        {Object.entries(languages).map(([lang, label]) => (
+            <div onclick="selectLanguage('/{lang}')">
+                <span class="icon">&#127760;</span> <!-- Globe icon -->
+                {label}
+            </div>
+        ))}
+    </div>
+</div>
+
+<script>
+    function selectLanguage(url: Location) {
+        location = url;
+    }
+
+    document.addEventListener('click', function(e) {
+        const select = document.querySelector('.custom-select');
+        if (!select.contains(e.target as Node)) {
+            closeAllSelect();
+        }
+    });
+
+    function closeAllSelect() {
+        const items = document.querySelectorAll('.select-items');
+        items.forEach(item => item.classList.add('select-hide'));
+        document.querySelector('.select-selected .icon').classList.remove('rotate');
+    }
+
+    document.querySelector('.select-selected').addEventListener('click', function(e) {
+        e.stopPropagation();
+        closeAllSelect();
+        this.nextElementSibling.classList.toggle('select-hide');
+        this.querySelector('.icon').classList.toggle('rotate');
+    });
+</script>
+
+<style>
+    .custom-select {
+        position: relative;
+        font-family: Arial, sans-serif;
+    }
+    .select-selected {
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        padding: 8px;
+        cursor: pointer;
+        color: black;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .select-selected .icon {
+        transition: transform 0.3s;
+    }
+    .select-selected .icon.rotate {
+        transform: rotate(180deg);
+    }
+    .select-items {
+        position: absolute;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        width: 100%;
+        z-index: 99;
+        color: black;
+    }
+    .select-items div {
+        padding: 8px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+    }
+    .select-items div .icon {
+        margin-right: 8px;
+    }
+    .select-items div:hover {
+        background-color: #f1f1f1;
+        color: black;
+    }
+    .select-hide {
+        display: none;
+    }
+</style>

@@ -1,4 +1,6 @@
 ---
+import CircleMargin from "../CircleMargin.astro";
+
 const projects = [
   { title: 'Project 1', description: 'A responsive e-commerce website' },
   { title: 'Project 2', description: 'A real-time chat application' },
@@ -8,6 +10,8 @@ const projects = [
 <section id="portfolio" class="min-h-screen flex items-center justify-center bg-gray-100">
   <div class="container mx-auto px-4">
     <h2 class="text-4xl font-bold mb-8 text-center">My Portfolio</h2>
+
+    <CircleMargin/>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       {projects.map(project => (
         <div class="bg-white p-6 rounded-lg shadow-md">

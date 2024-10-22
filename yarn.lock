@@ -2055,6 +2055,11 @@ escape-string-regexp@^5.0.0:
   resolved "https://registry.yarnpkg.com/escape-string-regexp/-/escape-string-regexp-5.0.0.tgz#4683126b500b61762f2dbebace1806e8be31b1c8"
   integrity sha512-/veY75JbMK4j1yjvuUxuVsiS/hr/4iHs9FTT6cgTexxdE0Ly/glccBAkloH/DofkjRbZU3bnoj38mOmhkZ0lHw==
 
+esm@^3.2.25:
+  version "3.2.25"
+  resolved "https://registry.yarnpkg.com/esm/-/esm-3.2.25.tgz#342c18c29d56157688ba5ce31f8431fbb795cc10"
+  integrity sha512-U1suiZ2oDVWv4zPO56S0NcR5QriEahGtdN2OR6FiOG4WJvcjBVFB0qI4+eKoWFH483PKGuLuu6V8Z4T5g63UVA==
+
 esprima@^4.0.0:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/esprima/-/esprima-4.0.1.tgz#13b04cdb3e6c5d19df91ab6987a8695619b0aa71"
@@ -4064,6 +4069,18 @@ queue-microtask@^1.2.2:
   version "1.2.3"
   resolved "https://registry.yarnpkg.com/queue-microtask/-/queue-microtask-1.2.3.tgz#4929228bbc724dfac43e0efb058caf7b6cfb6243"
   integrity sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==
+
+react-chatbot-kit@^2.2.2:
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/react-chatbot-kit/-/react-chatbot-kit-2.2.2.tgz#a3a1a9f87159dc20e49a21242bb028369432b874"
+  integrity sha512-8p/i0KkzkhoyG2XsL6Pb6f72k9j7GYNAc5SOa4f9OZwbCD3Q34uEruNPc06qa1wZHKfT6aFna19PA2plFuO2NA==
+  dependencies:
+    react-conditionally-render "^1.0.2"
+
+react-conditionally-render@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/react-conditionally-render/-/react-conditionally-render-1.0.2.tgz#9ff3c3fb6b76c1cfaae64429285fa99c6d275fb5"
+  integrity sha512-CtjIgaLHVDSgHis3gv/PT/8EnD6GPUL8PrhUjh7DP6S5Y3p56dGu7y2nVg6pYv1kv+fGznRhRmX3assr/vRw3A==
 
 react-dom@^18.3.1:
   version "18.3.1"
