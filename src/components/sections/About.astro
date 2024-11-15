@@ -1,15 +1,107 @@
 ---
+import Container from "../shared/Container.astro";
+
 ---
-<section id="about" class="min-h-screen flex items-center justify-center bg-white">
-    <div class="container mx-auto px-4">
-      <h2 class="text-4xl font-bold mb-8 text-center">About Me</h2>
-      <p class="text-lg mb-4">
-        I'm a passionate web developer with expertise in modern frontend technologies. 
-        My goal is to create beautiful, responsive, and user-friendly websites that make a difference.
-      </p>
-      <p class="text-lg mb-4">
-        With a strong foundation in HTML, CSS, and JavaScript, I specialize in building 
-        dynamic web applications using frameworks like React and Vue.js.
-      </p>
-    </div>
-  </section>
+
+<section
+  id="about"
+  class="min-h-screen flex items-center justify-center bg-white"
+>
+  <Container>
+    <article>
+      <div class="mb-8">
+        <h2 class="text-center md:text-justify text-3xl font-bold">About Me</h2>
+        <p class="italic">
+          Front-end developer with experience in creating attractive and
+          functional websites. With technical skills and a user-focused mindset,
+          I strive to bring ideas to life through clean and optimized code. In
+          addition to valuing collaboration, I believe that effective
+          communication and flexibility are key to success in interdisciplinary
+          projects.
+          <span class="italic">
+            Web Developer with 7 years of experience, focused on creating
+            attractive and functional frontend solutions using React.js and Vue.
+            I have skills in building dynamic interfaces and user experiences.
+            Although I excel in frontend, I also have hands-on experience with
+            backend development using Express, Laravel, and other technologies
+            like .NET, C#, MySQL, PostgreSQL, SQL Server, Blazor, and Yii2.
+            Additionally, I have experience in Network Administration and as an
+            Information Technology Specialist. I currently work remotely, which
+            allows me the flexibility to dive deeply into projects with
+            meticulous attention. I am experienced in using version control
+            platforms and project management tools such as Github, Gitlab, AWS
+            Codecommit, Trello, and Jira, and have basic DevOps knowledge. I am
+            always motivated to learn and apply the latest technological
+            innovations in the projects I participate in, and I am excited to
+            face new challenges and contribute to a collaborative,
+            growth-oriented environment.
+          </span>
+        </p>
+      </div>
+
+      <div class="flex flex-wrap">
+        <div class="w-full lg:w-1/3" data-aos="fade-right">
+          <img
+            src="https://st2.depositphotos.com/1032577/5312/i/950/depositphotos_53128333-stock-photo-about-me-sign.jpg"
+            class="w-full h-auto"
+            alt=""
+          />
+        </div>
+        <div class="w-full lg:w-2/3 pt-4 lg:pt-0" data-aos="fade-left">
+          <h3 class="text-center text-2xl font-semibold">
+            Web Developer &amp; Software Engineer.
+          </h3>
+          <!-- <p class="italic">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </p> -->
+          <div class="flex flex-wrap justify-center">
+            <div class="w-full lg:w-1/2">
+              <ul>
+                <li class="flex gap-1">
+                  <i class="icofont-rounded-right"></i>
+                  <span><strong>Date of Birth:</strong> August 1st, 1989</span>
+                </li>
+                <!-- <li>
+                    <i class="icofont-rounded-right"></i>
+                    <strong>Website:</strong>
+                    <a href="https://fidehlg89.github.io/landing-page/">Click here</a>
+                  </li> -->
+                <li class="flex gap-1">
+                  <i class="icofont-rounded-right"></i>
+                  <span><strong>Phone:</strong> +53 55998451</span>
+                </li>
+                <li>
+                  <i class="icofont-rounded-right"></i>
+                  <span><strong>City:</strong>Lisbon, Portugal</span>
+                </li>
+              </ul>
+            </div>
+            <div class="w-full lg:w-1/2">
+              <ul>
+                <li class="flex gap-1">
+                  <i class="icofont-rounded-right"></i>
+                  <span
+                    ><strong>Degree: </strong>University - Computer Engineer</span
+                  >
+                </li>
+                <li class="flex gap-1">
+                  <i class="icofont-rounded-right"></i>
+                  <span
+                    ><strong>Email: </strong>
+                    <a href="mailto:fidehlg89@gmail.com">fidehlg89@gmail.com</a
+                    ></span
+                  >
+                </li>
+                <li class="flex gap-1">
+                  <i class="icofont-rounded-right"></i>
+                  <span><strong>Status:</strong> Open to Work :)</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+  </Container>
+</section>
