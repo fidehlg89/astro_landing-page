@@ -10,6 +10,7 @@ export const languages = {
     en: {
       'nav.home': 'Home',
       'nav.about': 'About',
+      'nav.experience': 'Experience',
       'nav.portfolio': 'Portfolio',
       'nav.skills': 'Skills',
       'nav.contact': 'Contact',
@@ -31,6 +32,7 @@ export const languages = {
     es: {
       'nav.home': 'Inicio',
       'nav.about': 'Sobre mí',
+      'nav.experience': 'Experiencia',
       'nav.portfolio': 'Portafolio',
       'nav.skills': 'Habilidades',
       'nav.contact': 'Contacto',

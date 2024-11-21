@@ -1,0 +1,179 @@
+---
+import Container from "../shared/Container.astro";
+---
+
+<style>
+  .resume .resume-title {
+    font-size: 26px;
+    font-weight: 700;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: #050d18;
+  }
+
+  .resume .resume-item {
+    padding: 0 0 20px 20px;
+    margin-top: -2px;
+    border-left: 2px solid #1f5297;
+    position: relative;
+  }
+
+  .resume .resume-item h4 {
+    line-height: 18px;
+    font-size: 18px;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-family: "Poppins", sans-serif;
+    color: #050d18;
+    margin-bottom: 10px;
+  }
+
+  .resume .resume-item h5 {
+    font-size: 16px;
+    background: #e4edf9;
+    padding: 5px 15px;
+    display: inline-block;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+
+  .resume .resume-item ul {
+    padding-left: 20px;
+  }
+
+  .resume .resume-item ul li {
+    padding-bottom: 10px;
+  }
+
+  .resume .resume-item:last-child {
+    padding-bottom: 0;
+  }
+
+  .resume .resume-item::before {
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-radius: 50px;
+    left: -9px;
+    top: 0;
+    background: #fff;
+    border: 2px solid #1f5297;
+  }
+</style>
+
+<!-- ======= Experience Section ======= -->
+<section id="experience" class="resume min-h-screen">
+  <Container>
+    <h2 class="text-3xl font-bold mb-6 text-primary text-center">Experience</h2>
+
+    <div class="grid grid-cols-2">
+      <div class="col-span-1" data-aos="fade-up">
+        <article class="resume-item space-y-4">
+          <h4>Professional Experience</h4>
+          <ul>
+            <li>7 years as a Network Administrator and Web Developer</li>
+            <li>
+              Experience working with software development teams, currently
+              working on the frontend of web applications
+            </li>
+            <li>Experience managing multiple projects simultaneously</li>
+            <li>
+              Currently using Trello and Jira, achieving organization and
+              control of documentation across different projects
+            </li>
+          </ul>
+        </article>
+
+        <article class="resume-item space-y-4">
+          <h4>Education</h4>
+          <p>
+            Computer Engineer, graduated from the University of Holguín in Cuba
+            in July 2016. Solid training in various areas of computer science,
+            including:
+          </p>
+          <ul>
+            <li>Object-Oriented Programming (Java)</li>
+            <li>Data Structures (Java)</li>
+            <li>Introduction to Artificial Intelligence</li>
+            <li>Databases and Database Management Systems (PostgreSQL)</li>
+            <li>Enterprise Databases</li>
+            <li>Web Programming (JSP)</li>
+            <li>Computer Networks</li>
+            <li>E-commerce and Content Management Systems</li>
+            <li>Project Management (Subversion, Git)</li>
+            <li>Software Engineering (Iconix)</li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="col-span-1" data-aos="fade-up" data-aos-delay="100">
+        <div class="resume-item space-y-4">
+          <h4>Frontend and Technologies</h4>
+          <p>
+            Work on the front end with React.js, Vue, and CSS frameworks like
+            Bootstrap, Tailwind, and Sass preprocessor.
+          </p>
+        </div>
+        <div class="resume-item space-y-4">
+          <h4>More Technologies</h4>
+          <p>
+            Self-taught backend development in case a project requires it,
+            working with technologies like Node.js, Nest + Prisma, .NET Core,
+            Django (Python), and PHP (Yii2, Laravel).
+          </p>
+        </div>
+
+        <div class="resume-item space-y-4">
+          <h4>Version Control System</h4>
+          <p>
+            Using Git, with repositories hosted on GitHub and GitLab, following
+            the Scrum methodology, where tasks are assigned and objectives are
+            monitored daily and weekly by the team.
+          </p>
+        </div>
+
+        <!-- <div class="resume-item space-y-4">
+          <h4>Virtualization</h4>
+          <p>
+            I've been training with Docker for the past 2 years, and it is an
+            excellent tool for improving services.
+          </p>
+        </div> -->
+
+        <div class="resume-item">
+          <h4>Testing</h4>
+          <p>
+            Familiar with both manual testing and automated testing to optimize
+            the development process.
+          </p>
+        </div>
+
+        <div class="resume-item">
+          <h4>Skills and Tools</h4>
+          <ul>
+            <li>
+              Cloud version control platforms (GitHub, GitLab, AWS CodeCommit).
+            </li>
+            <li>
+              Project management with tools like Trello, Jira, and also Github
+              projects.
+            </li>
+            <li>
+              Familiarity with Asana, Clockify, Dailybot, and Google tools.
+            </li>
+            <li>
+              Use of hosting to host sites developed in CMS WordPress and
+              Laravel.
+            </li>
+            <li>
+              Development and management of sites in LAMP environments with
+              Laravel, Yii2 MVC with PostgreSQL, and MySQL databases.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </Container>
+</section>
+<!-- End Experience Section -->

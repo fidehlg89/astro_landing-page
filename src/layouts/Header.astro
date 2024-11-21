@@ -1,48 +1,65 @@
 ---
-import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-import LanguagePicker from '../components/LanguagePicker.astro';
+import { Site } from "../../config/site";
 ---
 
 <header
-  class="bg-gray-800 dark:bg-gray-900 text-white py-4 fixed w-full z-10 top-0"
+  class="bg-gray-800 dark:bg-gray-900 text-white py-4 fixed w-full z-50 top-0"
 >
   <div class="container mx-auto flex justify-between items-center">
-    <a href={``} class="text-2xl font-bold">Your Name</a>
+    <a href={`/`} class="text-base font-bold">
+      {
+        `<${Site.author.name}> `
+      }      
+    </a>
     <nav class="flex items-center">
       <ul class="flex space-x-4 mr-4">
         <li>
           <a
             href={`#home`}
             class="nav-link bg-gray-700 hover:bg-gray-600 px-3 py-2 rounded-md transition duration-300"
-            >{t('nav.home')}</a>
+            >{t("nav.home")}</a
+          >
+        </li>
+
+        <li>
+          <a
+            href={`#experience`}
+            class="nav-link bg-gray-700 hover:bg-gray-600 px-3 py-2 rounded-md transition duration-300"
+            >{t("nav.experience")}</a
+          >
         </li>
         <li>
           <a
             href={`#about`}
             class="nav-link hover:bg-gray-600 px-3 py-2 rounded-md transition duration-300"
-            >{t('nav.about')}</a>
+            >{t("nav.about")}</a
+          >
         </li>
         <li>
           <a
             href={`#portfolio`}
             class="nav-link hover:bg-gray-600 px-3 py-2 rounded-md transition duration-300"
-            >{t('nav.portfolio')}</a>
+            >{t("nav.portfolio")}</a
+          >
         </li>
         <li>
           <a
             href={`#skills`}
             class="nav-link hover:bg-gray-600 px-3 py-2 rounded-md transition duration-300"
-            >{t('nav.skills')}</a>
+            >{t("nav.skills")}</a
+          >
         </li>
         <li>
           <a
             href={`#contact`}
             class="nav-link hover:bg-gray-600 px-3 py-2 rounded-md transition duration-300"
-            >{t('nav.contact')}</a>
+            >{t("nav.contact")}</a
+          >
         </li>
       </ul>
       <!-- <LanguagePicker /> -->
@@ -62,7 +79,7 @@ import LanguagePicker from '../components/LanguagePicker.astro';
 
       navLinks.forEach((link) => {
         link.classList.remove("bg-blue-600", "text-white");
-       /*  link.classList.add("bg-gray-700"); */
+        /*  link.classList.add("bg-gray-700"); */
       });
       navLinks[index].classList.remove("bg-gray-700");
       navLinks[index].classList.add("bg-blue-600", "text-white");
@@ -81,7 +98,7 @@ import LanguagePicker from '../components/LanguagePicker.astro';
     padding-bottom: 5px;
   }
   .nav-link::after {
-    content: '';
+    content: "";
     position: absolute;
     width: 0;
     height: 2px;

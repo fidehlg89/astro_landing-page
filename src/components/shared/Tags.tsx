@@ -38,7 +38,7 @@ const tagsData: Tag[] = [
     mobileInitial: { top: "20px", left: "50px", rotate: "-2deg" },
     mobileHover: { top: "10%", left: "100%" },
     animation: "animate-floatwp",
-  },
+  },  
   {
     name: "Vue js",
     gradient: "linear-gradient(90deg, #00FFC2 0%, #006DD2 100%)",
@@ -90,7 +90,7 @@ const tagsData: Tag[] = [
     animation: "animate-floatcss",
   },
   {
-    name: "MongoDB",
+    name: "MySQL",
     gradient: "linear-gradient(90deg, #FF4B4B 0%, #FF2149 100%)",
     shadow: "0px 4px 14px rgba(255, 65, 73, 0.55)",
     initial: { top: "340px", left: "320px", rotate: "1.6deg" },
