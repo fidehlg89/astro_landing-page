@@ -19,7 +19,7 @@ const TypedSubtitle = () => {
   }, []);
 
   return (
-    <div className="App">
+    <div className="">
       <span ref={el} />
     </div>
   );
