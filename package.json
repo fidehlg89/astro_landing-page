@@ -13,6 +13,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "@astrojs/node": "^9.0.0",
     "@astrojs/react": "^3.6.2",
     "@astrojs/tailwind": "^5.0.0",
     "@astrojs/upgrade": "^0.3.4",
