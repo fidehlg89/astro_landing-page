@@ -1,6 +1,6 @@
 import { renderers } from './renderers.mjs';
 import { c as createExports } from './chunks/entrypoint_DlANciEd.mjs';
-import { manifest } from './manifest_DzJUgcw4.mjs';
+import { manifest } from './manifest_P58-lFuq.mjs';
 
 const _page0 = () => import('./pages/_image.astro.mjs');
 const _page1 = () => import('./pages/actions/send-email.astro.mjs');

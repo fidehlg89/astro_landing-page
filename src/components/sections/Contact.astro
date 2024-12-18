@@ -1,12 +1,21 @@
 ---
 import ContactForm from "../shared/ContactForm";
-
-
+import Container from "../shared/Container.astro";
 ---
 
-<section
-  id="contact"
-  class="min-h-screen flex items-center justify-center bg-gray-100"
->
-  <ContactForm client:load/>
+<section id="contact" class="w-full p-5 lg:p-20">
+  <Container className="p-5 lg:p-10">
+   
+    <article class="text-center px-5">
+      <h2 class="text-4xl font-bold text-center">Contact Me</h2>
+      <p>
+        <span class="text-xs lg:text-3xl font-light italic"
+          >Also you can send me a WhatsApp message</span
+        >
+      </p>
+    </article>
+
+    <ContactForm client:load />
+
+  </Container>
 </section>
