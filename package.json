@@ -22,6 +22,7 @@
     "astro": "^4.15.12",
     "axios": "^1.7.7",
     "esm": "^3.2.25",
+    "googleapis": "^144.0.0",
     "lucide": "^0.460.0",
     "lucide-react": "^0.468.0",
     "nodemailer": "^6.9.16",

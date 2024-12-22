@@ -1,23 +1,60 @@
-import type { APIRoute } from "astro";
-import { sendEmail } from "../../utils/email";
+import type { APIRoute } from 'astro'
+import nodemailer from 'nodemailer'
 
-export const prerender = false;
+const emailTo = import.meta.env.EMAIL
+const emailToPass = import.meta.env.PASS
+const host = import.meta.env.HOST
 
-export const POST: APIRoute = async ({ request, redirect }) => {
-  const to = "fidehlg89@gmail.com";
-  const subject = "New message from your website";
-  const { name, email, message } = await request.json();
+export const post: APIRoute = async ({ request }) => {
+  // console.log('request', request)
 
-  if (!name || !email || !message) {
-    throw new Error("Missing required fields");
+  if (request.headers.get('Content-Type') === 'application/json') {
+    const formData = await request.json()
+    const name = formData.name
+    const surname = formData.surname
+    const email = formData.email
+    const tel = formData.tel
+    const subject = formData.subject
+    const message = `${formData.message}
+    ----------------------------------------------------------------------
+    From: ${name} ${surname} • email: ${email} • tel: ${tel}
+    `
+    const html = `<div style="margin: 20px auto;font-family: Helvetica, Verdana, sans-serif">${message.replace(
+      /[\r\n]/g,
+      '<br>'
+    )}</div>`
+
+    // sendmail
+    let mailTransporter = nodemailer.createTransport({
+      host,
+      port: 587,
+      secure: false,
+      auth: {
+        user: emailTo,
+        pass: emailToPass,
+      },
+    })
+
+    let mailDetails = {
+      from: email,
+      to: emailTo,
+      subject: `${new URL(request.url).hostname}: ${subject}`,
+      text: message,
+      html,
+    }
+
+    let mailresult
+    try {
+      mailresult = await mailTransporter.sendMail(mailDetails)
+    } catch (error) {
+      console.log('******* Error: ', error)
+    }
+    console.log('Message sent: %s', mailresult?.messageId)
+
+    // return endpoint response
+    return new Response(JSON.stringify(mailDetails), {
+      status: 200,
+    })
   }
-
-  try {
-    const html = `<div>${message}</div>`;
-    await sendEmail({ to, subject, html });
-  } catch (error) {
-    throw new Error("Failed to send email");
-  }
-
-  return redirect("/");
-};
+  return new Response(null, { status: 400 }) // if not a json request
+}
