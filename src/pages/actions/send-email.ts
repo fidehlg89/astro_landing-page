@@ -1,42 +1,47 @@
-import type { APIRoute } from 'astro';
-import nodemailer from 'nodemailer';
-import 'dotenv/config'; // For environment variables
+import React from "react";
+import ReactDOMServer from "react-dom/server";
+import EmailTemplate from "../../components/shared/EmailTemplate";
 
-export const post: APIRoute = async ({ request }) => {
+const RESEND_API_KEY = import.meta.env.RESEND_API_KEY;
+const EMAIL_TO = import.meta.env.TO_EMAIL;
+
+export async function POST({ request }: { request: Request }) {
   try {
+    // Parse the incoming form data
     const { name, email, message } = await request.json();
 
-    if (!name || !email || !message) {
-      return new Response(
-        JSON.stringify({ message: 'Todos los campos son obligatorios' }),
-        { status: 400 }
-      );
-    }
-
-    const transporter = nodemailer.createTransport({
-      service: 'gmail',
-      auth: {
-        user: process.env.GMAIL_USER,
-        pass: process.env.GMAIL_PASSWORD,
-      },
-    });
-
-    await transporter.sendMail({
-      from: `"Formulario de Contacto" <${process.env.GMAIL_USER}>`,
-      to: process.env.CONTACT_EMAIL,
-      subject: 'Nuevo Mensaje del Formulario de Contacto',
-      text: `Nombre: ${name}\nCorreo: ${email}\nMensaje: ${message}`,
-    });
-
-    return new Response(
-      JSON.stringify({ message: 'Mensaje enviado con éxito' }),
-      { status: 200 }
+    // Render the email template to HTML
+    const emailBody = ReactDOMServer.renderToStaticMarkup(
+      React.createElement(EmailTemplate, { name, email, message })
     );
+
+    // Send the email using the Resend API
+    const res = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${RESEND_API_KEY}`,
+      },
+      body: JSON.stringify({
+        from: "Landing Page <onboarding@resend.dev>",
+        to: [`${EMAIL_TO}`],
+        subject: "New Contact Request from Landing Page",
+        html: emailBody,
+      }),
+    });
+
+    if (res.ok) {
+      const data = await res.json();
+      return new Response(JSON.stringify(data), { status: 200 });
+    } else {
+      const error = await res.json();
+      return new Response(JSON.stringify({ error }), { status: res.status });
+    }
   } catch (error) {
-    console.error('Error al enviar el correo:', error);
+    console.error("Error processing request:", error);
     return new Response(
-      JSON.stringify({ message: 'Error al enviar el mensaje. Intente nuevamente más tarde.' }),
+      JSON.stringify({ error: "Failed to send email." }),
       { status: 500 }
     );
   }
-};
+}

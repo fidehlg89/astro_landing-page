@@ -2,31 +2,38 @@
 const currentYear = new Date().getFullYear();
 
 const socialLinks = [
-  { name: 'GitHub', url: 'https://github.com', icon: 'github' },
-  { name: 'LinkedIn', url: 'https://linkedin.com', icon: 'linkedin' },
-  { name: 'X', url: 'https://x.com', icon: 'x' },
+  { name: "GitHub", url: "https://github.com", icon: "github" },
+  { name: "LinkedIn", url: "https://linkedin.com", icon: "linkedin" },
+  { name: "X", url: "https://x.com", icon: "x" },
 ];
 ---
+
 <footer class="bg-gray-800 text-white py-8">
   <div class="container mx-auto px-4">
     <div class="flex flex-wrap justify-between items-center">
-      <div class="w-full md:w-1/3 mb-4 md:mb-0">
-        <h3 class="text-xl font-semibold mb-2">Contact Us</h3>
-        <p>Email: contact@example.com</p>
-        <p>Phone: (123) 456-7890</p>
-      </div>
+      <div class="w-full md:w-1/3 mb-4 md:mb-0"></div>
       <div class="w-full md:w-1/3 mb-4 md:mb-0 text-center">
-        <p>&copy; {currentYear} My Landing Page. All rights reserved.</p>
+        <p>
+          &copy;
+          {`${currentYear} <Fidel Ernesto> Landing Page.`}
+        </p>
       </div>
       <div class="w-full md:w-1/3 flex justify-center md:justify-end">
-        {socialLinks.map((link) => (
-          <a href={link.url} target="_blank" rel="noopener noreferrer" class="mx-2 hover:text-gray-400 transition-colors">
-            <span class="sr-only">{link.name}</span>
-            <svg class="w-6 h-6 fill-current" aria-hidden="true">
-              <use xlink:href={`/sprites.svg#${link.icon}`}></use>
-            </svg>
-          </a>
-        ))}
+        {
+          socialLinks.map((link) => (
+            <a
+              href={link.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="mx-2 hover:text-gray-400 transition-colors"
+            >
+              <span class="sr-only">{link.name}</span>
+              <svg class="w-6 h-6 fill-current" aria-hidden="true">
+                <use xlink:href={`/sprites.svg#${link.icon}`} />
+              </svg>
+            </a>
+          ))
+        }
       </div>
     </div>
   </div>

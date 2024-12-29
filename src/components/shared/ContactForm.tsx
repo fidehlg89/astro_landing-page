@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useForm, type SubmitHandler } from "react-hook-form";
 import axios from "axios";
+import { toast, ToastContainer } from "react-toastify";
+import { Loader2 } from "lucide-react";
 
 interface ContactFormData {
   name: string;
@@ -16,24 +18,26 @@ const ContactForm: React.FC = () => {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm<ContactFormData>();
 
   const onSubmit: SubmitHandler<ContactFormData> = async (data) => {
     setIsSubmitting(true);
-    setStatusMessage(null);
-
     try {
       const response = await axios.post("/actions/send-email", data, {
         headers: {
           "Content-Type": "application/json",
         },
       });
-      setStatusMessage("Message sent successfully!");
-    } catch (error) {
-      console.error("Error sending message:", error);
-      setStatusMessage("Failed to send the message. Please try again later.");
+      if (response.status === 200) {
+        reset();
+        toast.success("Message sent successfully!");
+      }
+    } catch (error: any) {
+      toast.error("Error al enviar el mensaje:", error);
     } finally {
       setIsSubmitting(false);
+      setStatusMessage("Message sent successfully!");
     }
   };
 
@@ -42,8 +46,6 @@ const ContactForm: React.FC = () => {
       className="max-w-md mx-auto p-6 bg-white shadow-md rounded-md"
       onSubmit={handleSubmit(onSubmit)}
     >
-      <h2 className="text-xl font-bold mb-4 text-center">Contact Us</h2>
-
       <div className="mb-4">
         <label htmlFor="name" className="block mb-2 text-sm font-medium">
           Name
@@ -85,7 +87,7 @@ const ContactForm: React.FC = () => {
         <textarea
           id="message"
           {...register("message", { required: "Message is required" })}
-          rows={4}
+          rows={3}
           className={`w-full px-3 py-2 border rounded ${
             errors.message ? "border-red-500" : "border-gray-300"
           }`}
@@ -98,26 +100,21 @@ const ContactForm: React.FC = () => {
       <button
         type="submit"
         disabled={isSubmitting}
-        className={`w-full px-4 py-2 text-white rounded ${
+        className={`w-full px-4 py-2 text-white rounded text-center flex justify-center ${
           isSubmitting
             ? "bg-gray-400 cursor-not-allowed"
             : "bg-blue-600 hover:bg-blue-700"
         }`}
       >
-        {isSubmitting ? "Sending..." : "Send Message"}
+        {isSubmitting ? (
+          <Loader2 className="animate-spin w-6 h-6"></Loader2>
+        ) : (
+          "Send Message"
+        )}
       </button>
 
-      {statusMessage && (
-        <p
-          className={`mt-4 text-center ${
-            statusMessage.startsWith("Message sent")
-              ? "text-green-500"
-              : "text-red-500"
-          }`}
-        >
-          {statusMessage}
-        </p>
-      )}
+      {/* Toast Notifications */}
+      <ToastContainer />
     </form>
   );
 };
