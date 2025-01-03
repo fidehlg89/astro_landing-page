@@ -1,13 +1,6 @@
 ---
-import CircleMargin from "../CircleMargin.astro";
-import Projects from "../projects/Projects.astro";
+import { Projects } from "../projects/Projects";
 import Container from "../shared/Container.astro";
-
-const projects = [
-  { title: "Project 1", description: "A responsive e-commerce website" },
-  { title: "Project 2", description: "A real-time chat application" },
-  { title: "Project 3", description: "A weather forecast app" },
-];
 ---
 
 <section
@@ -15,7 +8,7 @@ const projects = [
   class="min-h-screen flex items-center justify-center bg-gray-100"
 >
   <Container>
-    <h2 class="text-4xl font-bold mb-8 text-center">Projects</h2>    
-    <Projects />
+    <h2 class="text-4xl font-bold mb-8 text-center">Projects</h2>
+    <Projects client:load />
   </Container>
 </section>
