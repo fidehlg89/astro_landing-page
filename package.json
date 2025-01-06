@@ -19,6 +19,7 @@
     "@astrojs/upgrade": "^0.3.4",
     "@astrojs/vercel": "^8.0.1",
     "@types/nodemailer": "^6.4.17",
+    "@vercel/analytics": "^1.4.1",
     "astro": "^4.15.12",
     "axios": "^1.7.7",
     "date-fns": "^4.1.0",
