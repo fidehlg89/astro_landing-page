@@ -5,5 +5,8 @@ export const Site = {
     name: "Fidel Ernesto",
     email: "fidehlg89@gmail.com",
     age: 35,
+    social: {
+      linkedin: "https://www.linkedin.com/in/fidelernestoha89/",
+    },
   },
 };
