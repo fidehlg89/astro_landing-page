@@ -13,11 +13,12 @@
     "test": "jest"
   },
   "dependencies": {
+    "@astrojs/image": "^0.18.0",
     "@astrojs/node": "^9.0.0",
     "@astrojs/react": "^3.6.2",
     "@astrojs/tailwind": "^5.0.0",
     "@astrojs/upgrade": "^0.3.4",
-    "@astrojs/vercel": "^8.0.1",
+    "@astrojs/vercel": "^8.0.4",
     "@types/nodemailer": "^6.4.17",
     "@vercel/analytics": "^1.4.1",
     "astro": "^4.15.12",
