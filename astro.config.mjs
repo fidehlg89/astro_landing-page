@@ -5,7 +5,7 @@ import vercel from "@astrojs/vercel";
 /* import node from "@astrojs/node"; */
 
 export default defineConfig({
-  output: "hybrid",
+  output: 'server',
   adapter: vercel(),
   integrations: [tailwind(), react()],
   include: ["src", "types"],
