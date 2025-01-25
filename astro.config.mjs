@@ -5,9 +5,9 @@ import vercel from "@astrojs/vercel";
 import node from "@astrojs/node";
 
 export default defineConfig({
-  output: "server",
+  output: 'server',
   adapter: vercel({
-    mode: "standalone",
+    mode: 'standalone',
   }),
   integrations: [tailwind(), react()],
   include: ["src", "types"],
